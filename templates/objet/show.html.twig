@@ -1,0 +1,16 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ objet.nom }}{% endblock %}
+
+{% block body %}
+    <h1>{{ objet.nom }}</h1>
+    <p>Description : {{ objet.description }}</p>
+    <p>Caractéristique : {{ objet.caracteristique }}</p>
+    <p>Valeur estimée : {{ objet.valeurEstimee }} €</p>
+
+    {% if objet.imageName %}
+        <img src="{{ asset('uploads/' ~ objet.imageName) }}" alt="{{ objet.nom }}">
+    {% endif %}
+
+    <a href="{{ path('app_home') }}">Retour à l'accueil</a>
+{% endblock %}
