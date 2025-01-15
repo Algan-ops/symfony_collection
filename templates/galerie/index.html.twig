@@ -1,0 +1,19 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Galerie{% endblock %}
+
+{% block body %}
+    <h1>Galerie des objets</h1>
+
+    <div class="objets">
+        {% for objet in objets %}
+            <div class="objet">
+                <h2>{{ objet.nom }}</h2>
+                <p>{{ objet.caracteristique }}</p>
+                <p>Valeur estimée : {{ objet.valeurEstimee }} €</p>
+                <a href="{{ path('objet_show', { id: objet.id }) }}">Voir les détails</a>
+            </div>
+        {% endfor %}
+    </div>
+{% endblock %}
+
