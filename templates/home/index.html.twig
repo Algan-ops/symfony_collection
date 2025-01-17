@@ -6,14 +6,23 @@
     <h1>Bienvenue sur le site de collection</h1>
     <p>Voici les derniers objets ajoutés :</p>
 
-    <div class="objets">
-        {% for objet in objets %}
-            <div class="objet">
-                <h2>{{ objet.nom }}</h2>
-                <p>{{ objet.caracteristique }}</p>
-                <p>Valeur estimée : {{ objet.valeurEstimee }} €</p>
-                <a href="{{ path('objet_show', { id: objet.id }) }}">Voir les détails</a>
-            </div>
-        {% endfor %}
-    </div>
+    {% for objet in objets %}
+        <div class="objet">
+            <h2>{{ objet.nom }}</h2>
+            <p>{{ objet.caracteristique }}</p>
+            <p>Valeur estimée : {{ objet.valeurEstimee }} €</p>
+            <a href="{{ path('objet_show', { id: objet.id }) }}">Voir les détails</a>
+
+            {% if is_granted('edit', objet) %}
+                <a href="{{ path('objet_edit', { id: objet.id }) }}">Modifier</a>
+            {% endif %}
+            {% if is_granted('delete', objet) %}
+                <a href="{{ path('objet_delete', { id: objet.id }) }}" 
+                onclick="return confirm('Êtes-vous sûr de vouloir supprimer cet objet ?');">
+                    Supprimer
+                </a>
+            {% endif %}
+        </div>
+    {% endfor %}
+
 {% endblock %}

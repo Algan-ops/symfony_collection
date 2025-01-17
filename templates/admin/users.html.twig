@@ -1,0 +1,36 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Liste des utilisateurs{% endblock %}
+
+{% block body %}
+    <h1>Liste des utilisateurs</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Email</th>
+                <th>Rôles</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for user in users %}
+                <tr>
+                    <td>{{ user.id }}</td>
+                    <td>{{ user.email }}</td>
+                    <td>{{ user.roles | join(', ') }}</td>
+                    <td>
+                        <a href="{{ path('admin_add_role', {id: user.id}) }}">Ajouter ROLE_ADMIN</a>
+                        <a href="{{ path('admin_remove_role', {id: user.id}) }}">Retirer ROLE_ADMIN</a>
+                    </td>
+                </tr>
+            {% endfor %}
+            {% for message in app.flashes('success') %}
+                <div class="alert alert-success">
+                    {{ message }}
+                 </div>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

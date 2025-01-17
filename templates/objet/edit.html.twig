@@ -1,0 +1,14 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Modifier l'objet{% endblock %}
+
+{% block body %}
+    <h1>Modifier l'objet</h1>
+
+    {{ form_start(objetForm) }}
+    {{ form_widget(objetForm) }}
+    <button type="submit" class="btn btn-primary">Enregistrer</button>
+    {{ form_end(objetForm) }}
+    
+    <a href="{{ path('app_home') }}">Retour</a>
+{% endblock %}

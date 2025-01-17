@@ -1,0 +1,12 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Créer un nouvel objet{% endblock %}
+
+{% block body %}
+    <h1>Créer un nouvel objet</h1>
+
+    {{ form_start(objetForm) }}
+        {{ form_widget(objetForm) }}
+        <button type="submit">Ajouter</button>
+    {{ form_end(objetForm) }}
+{% endblock %}

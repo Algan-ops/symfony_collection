@@ -23,13 +23,13 @@ class Objet
     private ?string $description = null;
 
     #[ORM\Column(length: 255)]
-    private ?string $carateristique = null;
+    private ?string $caracteristique = null;
 
     #[ORM\Column]
-    private ?float $valeur_estimée = null;
+    private ?float $valeurEstimee = null;
 
-    #[ORM\Column(length: 255, nullable: true)]
-    private ?string $imageName = null;
+    // #[ORM\Column(length: 255, nullable: true)]
+    // private ?string $imageName = null;
 
     #[ORM\ManyToOne(inversedBy: 'objets')]
     private ?Categorie $categorie = null;
@@ -84,41 +84,41 @@ class Objet
         return $this;
     }
 
-    public function getCarateristique(): ?string
+    public function getCaracteristique(): ?string
     {
-        return $this->carateristique;
+        return $this->caracteristique;
     }
 
-    public function setCarateristique(string $carateristique): static
+    public function setCaracteristique(string $caracteristique): self
     {
-        $this->carateristique = $carateristique;
+        $this->caracteristique = $caracteristique;
 
         return $this;
     }
 
-    public function getValeurEstimée(): ?float
+    public function getValeurEstimee(): ?float
     {
-        return $this->valeur_estimée;
+        return $this->valeurEstimee;
     }
 
-    public function setValeurEstimée(float $valeur_estimée): static
+    public function setValeurEstimee(float $valeurEstimee): self
     {
-        $this->valeur_estimée = $valeur_estimée;
+        $this->valeurEstimee = $valeurEstimee;
 
         return $this;
     }
 
-    public function getImageName(): ?string
-    {
-        return $this->imageName;
-    }
+    // public function getImageName(): ?string
+    // {
+    //     return $this->imageName;
+    // }
 
-    public function setImageName(?string $imageName): static
-    {
-        $this->imageName = $imageName;
+    // public function setImageName(?string $imageName): static
+    // {
+    //     $this->imageName = $imageName;
 
-        return $this;
-    }
+    //     return $this;
+    // }
 
     public function getCategorie(): ?Categorie
     {

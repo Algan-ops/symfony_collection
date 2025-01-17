@@ -4,17 +4,26 @@
         <meta charset="UTF-8">
         <title>{% block title %}{% endblock %}</title>
     </head>
-    {% block header %}
-    <header>
-        <nav>
-            <a href="{{ path('app_home') }}">Accueil</a>
-            <a href="{{ path('app_galerie') }}">Galerie</a>
-        </nav>
-    </header>
-    {% endblock %}
     <body>
-        {% block body %}
+        {% block header %}
+        <header>
+            <nav>
+                <a href="{{ path('app_home') }}">Accueil</a>
+                <a href="{{ path('app_galerie') }}">Galerie</a>
+                
+                {% if app.user %}
+                    <span>Bienvenue,</span>
+                    <a href="{{ path('app_logout') }}">Se déconnecter</a>
+                {% else %}
+                    <a href="{{ path('app_register') }}">S'inscrire</a>
+                    <a href="{{ path('app_login') }}">Se connecter</a>
+                {% endif %}
+            </nav>
+        </header>
+        {% endblock %}
 
+        {% block body %}
         {% endblock %}
     </body>
 </html>
+

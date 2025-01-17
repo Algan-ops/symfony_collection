@@ -12,7 +12,7 @@ final class HomeController extends AbstractController{
     #[Route('/', name: 'app_home')]
 public function index(ObjetRepository $objetRepository): Response
 {
-    // Récupère les 4 derniers objets ajoutés
+    
     $derniersObjets = $objetRepository->findBy([], ['id' => 'DESC'], 4);
 
     return $this->render('home/index.html.twig', [
